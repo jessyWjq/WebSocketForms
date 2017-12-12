@@ -99,6 +99,9 @@
             this.chatListBox1.Size = new System.Drawing.Size(331, 335);
             this.chatListBox1.TabIndex = 2;
             this.chatListBox1.Text = "chatListBox1";
+            this.chatListBox1.DoubleClickSubItem += new _ChatListBox.ChatListBox.ChatListEventHandler(this.chatListBox1_DoubleClickSubItem);
+            this.chatListBox1.MouseEnterHead += new _ChatListBox.ChatListBox.ChatListEventHandler(this.chatListBox1_MouseEnterHead);
+            this.chatListBox1.MouseLeaveHead += new _ChatListBox.ChatListBox.ChatListEventHandler(this.chatListBox1_MouseLeaveHead);
             // 
             // frmMain
             // 
@@ -113,6 +116,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMain";
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

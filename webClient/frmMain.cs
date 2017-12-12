@@ -1,14 +1,7 @@
 ﻿using CuStomControls._ChatListBox;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Reflection;
 
 namespace webClient
 {
@@ -21,14 +14,21 @@ namespace webClient
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            //int iActulaWidth = Screen.PrimaryScreen.Bounds.Width;
+            //int iActulaHeight = Screen.PrimaryScreen.Bounds.Height;
+            //当前的屏幕除任务栏外的工作域大小
+            int iActulaWidth = SystemInformation.WorkingArea.Width;
+            int iActulaHeight = SystemInformation.WorkingArea.Height;
+            this.Location = new Point(iActulaWidth - this.Width, iActulaHeight - this.Height);
+
             button1.Text = "闪动";
             button2.Text = "插入[离开]";
             button3.Text = "大/小图标";
             chatListBox1.Items.Clear();
             Random rnd = new Random();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 1; i++)
             {
-                ChatListItem item = new ChatListItem("Group " + i);
+                ChatListItem item = new ChatListItem("默认分组");
                 for (int j = 0; j < 10; j++)
                 {
                     ChatListSubItem subItem = new ChatListSubItem("NicName", "DisplayName" + j, "Personal Message...!");
@@ -52,20 +52,7 @@ namespace webClient
             chatListBox1.Items[0].SubItems[0].IsTwinkle = !chatListBox1.Items[0].SubItems[0].IsTwinkle;
             chatListBox1.Items[0].SubItems[1].IsTwinkle = !chatListBox1.Items[0].SubItems[1].IsTwinkle;
         }
-        private void chatListBox1_MouseEnterHead(object sender, ChatListEventArgs e)
-        {
-            this.Text = e.MouseOnSubItem.DisplayName;
-        }
-
-        private void chatListBox1_MouseLeaveHead(object sender, ChatListEventArgs e)
-        {
-            this.Text = "Null";
-        }
-
-        private void chatListBox1_DoubleClickSubItem(object sender, ChatListEventArgs e)
-        {
-            MessageBox.Show(e.SelectSubItem.DisplayName);
-        }
+       
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -85,6 +72,21 @@ namespace webClient
                 chatListBox1.IconSizeMode = ChatListItemIcon.Small;
             else
                 chatListBox1.IconSizeMode = ChatListItemIcon.Large;
+        }
+
+        private void chatListBox1_DoubleClickSubItem(object sender, ChatListEventArgs e)
+        {
+            MessageBox.Show(e.SelectSubItem.DisplayName);
+        }
+
+        private void chatListBox1_MouseEnterHead(object sender, ChatListEventArgs e)
+        {
+            this.Text = e.MouseOnSubItem.DisplayName;
+        }
+
+        private void chatListBox1_MouseLeaveHead(object sender, ChatListEventArgs e)
+        {
+            this.Text = "Null";
         }
     }
 }
