@@ -3,3 +3,11 @@
 ################################################################################
 
 /.vs/SocketForms/v14
+/ConsoleWeb/obj/Debug
+/CuStomControls/obj/Debug
+/SocketUtil/obj/Debug
+/SocketModel/obj/Debug
+/SocketForms/obj/Debug
+/ThreadingForm/obj/Debug
+/WebApplicationCLI/obj/Debug
+/webClient/obj/Debug

@@ -1,0 +1,251 @@
+﻿if (value.StartsWith("K")) //（手机）发来消息
+            {
+                //解析传入数据
+                string bb = "";
+                string a = "K:手机:";
+                Regex r = new Regex(a);
+                Match m = r.Match(value);
+                KSessionId = session.SessionID;//给当前手机链接用户反显用（用户提取websocket用户（含状态），第一次链接返回，发送消息返回）
+                string[] c = value.Split('#');
+
+                string aa = "K:手机:已链接:";
+                Regex rr = new Regex(aa);
+                Match mm = rr.Match(value);
+                if (mm.Success)
+                {
+                    bb = c[0].Replace("K:手机:已链接:", "");
+                    AddusersIdNaame(session.SessionID, bb);
+                }
+                else
+                {
+                    bb = c[0].Replace("K:手机:", "");
+                }
+
+                //判断处理对方登录信息,本方登录显示
+                if (mm.Success)
+                {
+                    //对方显示信息（给在线用户发消息）
+                    for (int ii = 0; ii < DNusers.Rows.Count; ii++)
+                    {
+                        if (!String.IsNullOrEmpty(DNusers.Rows[ii]["id"].ToString()) && DNusers.Rows[ii]["zt"].ToString() == "在线")
+                            SendMsgToRemotePoint(DNusers.Rows[ii]["id"].ToString(), string.Format("{0}", bb + "已链接，可以与其通讯！     " + datetimes));
+                    }
+                    //本方反显信息
+                    if (!String.IsNullOrEmpty(KSessionId))
+                        SendMsgToRemotePoint(KSessionId, string.Format("{0}", bb + "已链接成功！       " + datetimes));
+                }
+                else if (value == "K:手机:提取电脑在线用户")//给本方返回对方在线用户
+                {
+                    //本方反显对方在线用户信息
+                    string ulist = "";
+                    for (int ii = 0; ii < DNusers.Rows.Count; ii++)
+                    {
+                        ulist = ulist + DNusers.Rows[ii]["name"] + "*" + DNusers.Rows[ii]["zt"] + "#";
+                    }
+                    if (!String.IsNullOrEmpty(KSessionId))
+                        SendMsgToRemotePoint(KSessionId, string.Format("{0}", "获取成功:" + ulist));
+                }
+                else if (value == "K:手机:提取手机在线用户")//给本方返回对方在线用户
+                {
+                    //本方反显对方在线用户信息
+                    string ulist = "";
+                    for (int ii = 0; ii < users.Rows.Count; ii++)
+                    {
+                        ulist = ulist + users.Rows[ii]["name"] + "*" + users.Rows[ii]["zt"] + "#";
+                    }
+                    if (!String.IsNullOrEmpty(KSessionId))
+                        SendMsgToRemotePoint(KSessionId, string.Format("{0}", "获取成功:" + ulist));
+                }
+                else if (value == "K:手机:提取所有用户")//给本方返回对方在线用户
+                {
+                    //本方反显对方在线用户信息
+                    string ulist = "";
+                    for (int ii = 0; ii < users.Rows.Count; ii++)
+                    {
+                        ulist = ulist + users.Rows[ii]["name"] + "*" + users.Rows[ii]["zt"] + "#";
+                    }
+                    for (int ii = 0; ii < DNusers.Rows.Count; ii++)
+                    {
+                        ulist = ulist + DNusers.Rows[ii]["name"] + "*" + DNusers.Rows[ii]["zt"] + "#";
+                    }
+                    if (!String.IsNullOrEmpty(KSessionId))
+                        SendMsgToRemotePoint(KSessionId, string.Format("{0}", "获取成功:" + ulist));
+                }
+                else if (value == "K:手机:提取所有在线用户")//给本方返回对方在线用户
+                {
+                    //本方反显对方在线用户信息
+                    string ulist = "";
+                    for (int ii = 0; ii < users.Rows.Count; ii++)
+                    {
+                        if (users.Rows[ii]["zt"].ToString() == "在线")
+                        {
+                            ulist = ulist + users.Rows[ii]["name"] + "*" + users.Rows[ii]["zt"] + "#";
+                        }
+                    }
+                    for (int ii = 0; ii < DNusers.Rows.Count; ii++)
+                    {
+                        if (users.Rows[ii]["zt"].ToString() == "在线")
+                        {
+                            ulist = ulist + DNusers.Rows[ii]["name"] + "*" + DNusers.Rows[ii]["zt"] + "#";
+                        }
+                    }
+                    if (!String.IsNullOrEmpty(KSessionId))
+                        SendMsgToRemotePoint(KSessionId, string.Format("{0}", "获取成功:" + ulist));
+                }
+                else if (value.Contains("K:手机:更新用户"))//给本方返回对方在线用户
+                {
+                    //本方反显对方在线用户信息
+                    string ulist = "";
+                    string mb = c[1];//取接收人集合
+                    string[] mbd = mb.Split('*');
+
+                    //接收未添加时的用户数量
+                    //int userNum = users.Rows.Count;
+                    //判断接收了几个用户
+                    for (int i = 0; i < mbd.Length - 1; i++)
+                    {
+                        //接收用户进行比较
+                        string nama = mbd[i];
+                        bool falg = true;
+                        bool falgDn = true;
+                        //循环比较两者间是否存在   
+                        foreach (DataRow row in users.Rows)
+                        {
+                            if (nama == row["name"].ToString())
+                            {
+                                falg = false;
+                                break;
+                            }
+                        }
+                        foreach (DataRow row in DNusers.Rows)
+                        {
+                            if (nama == row["name"].ToString())
+                            {
+                                falgDn = false;
+                                break;
+                            }
+                        }
+                        if (falg)
+                        {
+                            users.Rows.Add("", nama, "离线");
+                        }
+                        if (falgDn)
+                        {
+                            DNusers.Rows.Add("", nama, "离线");
+                        }
+                    }
+                    //返回当前信息到本
+                    ulist += "手机:";
+                    for (int ii = 0; ii < users.Rows.Count; ii++)
+                    {
+                        ulist = ulist + users.Rows[ii]["name"] + "*" + users.Rows[ii]["zt"] + "#";
+                    }
+                    ulist += "@电脑:";
+                    for (int ii = 0; ii < DNusers.Rows.Count; ii++)
+                    {
+                        ulist = ulist + DNusers.Rows[ii]["name"] + "*" + DNusers.Rows[ii]["zt"] + "#";
+                    }
+                    if (!String.IsNullOrEmpty(KSessionId))
+                        SendMsgToRemotePoint(KSessionId, string.Format("{0}", "获取成功:" + ulist));
+                }
+                else if (m.Success)//判断处理对方发送信息
+                {
+                    //在线不在线统计字段
+                    int zxnum = 0;
+                    int bzxnum = 0;
+                    //对方显示信息
+                    string mb = c[1];//取接收人集合
+                    if (mb == "")//目标人为空时，发送对方全部
+                    {
+                        for (int ii = 0; ii < DNusers.Rows.Count; ii++)
+                        {
+                            if (!String.IsNullOrEmpty(DNusers.Rows[ii]["id"].ToString()))
+                            {
+                                if (DNusers.Rows[ii]["zt"].ToString() == "在线")//给在线用户发送信息
+                                {
+                                    zxnum++;
+                                    SendMsgToRemotePoint(DNusers.Rows[ii]["id"].ToString(), string.Format("{0}", bb + "#" + c[2] + "#" + datetimes));
+                                }
+                                else
+                                {
+                                    bzxnum++;
+                                    //不在线用户记录（发全部用户不用）
+                                }
+                            }
+                        }
+                    }
+                    //解析发送目标所属端
+                    string[] mbd = mb.Split('@');
+                    for (int nnn = 0; nnn < mbd.Length - 1; nnn++)
+                    {
+                        //解析接收人集合
+                        string[] jihe = mbd[nnn].Split('&');
+                        string[] cc = jihe[1].Split('*');
+                        if (jihe[0] == "手机")
+                        {
+                            for (int i = 0; i < cc.Length - 1; i++)
+                            {
+                                for (int iii = 0; iii < users.Rows.Count; iii++)//给手机发送消息
+                                {
+                                    string dddd = users.Rows[iii]["name"].ToString();
+                                    if (!String.IsNullOrEmpty(users.Rows[iii]["id"].ToString()) && cc[i] == users.Rows[iii]["name"].ToString())
+                                    {
+                                        if (users.Rows[iii]["zt"].ToString() == "在线")//给在线用户发送信息
+                                        {
+                                            zxnum++;
+                                            SendMsgToRemotePoint(users.Rows[iii]["id"].ToString(), string.Format("{0}", bb + "#" + c[2] + "#" + datetimes));
+                                        }
+                                        else
+                                        {
+                                            bzxnum++;
+                                            //不在线用户记录
+                                            usersmsg.Rows.Add();
+                                            usersmsg.Rows[usersmsg.Rows.Count - 1]["name"] = users.Rows[iii]["name"];
+                                            usersmsg.Rows[usersmsg.Rows.Count - 1]["msg"] = bb + "#" + c[2] + "#" + datetimes;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else if (jihe[0] == "电脑")
+                        {
+                            for (int i = 0; i < cc.Length - 1; i++)
+                            {
+                                for (int ii = 0; ii < DNusers.Rows.Count; ii++)//给电脑发送消息
+                                {
+                                    if (!String.IsNullOrEmpty(DNusers.Rows[ii]["id"].ToString()) && cc[i] == DNusers.Rows[ii]["name"].ToString())
+                                    {
+                                        if (DNusers.Rows[ii]["zt"].ToString() == "在线")//给在线用户发送信息
+                                        {
+                                            zxnum++;
+                                            SendMsgToRemotePoint(DNusers.Rows[ii]["id"].ToString(), string.Format("{0}", bb + "#" + c[2] + "#" + datetimes));
+                                        }
+                                        else
+                                        {
+                                            bzxnum++;
+                                            //不在线用户记录
+                                            DNusersmsg.Rows.Add();
+                                            DNusersmsg.Rows[DNusersmsg.Rows.Count - 1]["name"] = DNusersmsg.Rows[ii]["name"];
+                                            DNusersmsg.Rows[DNusersmsg.Rows.Count - 1]["msg"] = bb + "#" + c[2] + "#" + datetimes;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+
+
+
+                    //本方反显信息
+                    if (!String.IsNullOrEmpty(KSessionId))
+                        SendMsgToRemotePoint(KSessionId, string.Format("{0}", bb + "#" + "在线发送:" + zxnum.ToString() + "离线发送:" + bzxnum.ToString() + "#" + datetimes));
+                }
+                //页面未链接
+                else
+                {
+
+                    AddMsgToSessionId(VSessionId);
+                }
+            }
+            else 

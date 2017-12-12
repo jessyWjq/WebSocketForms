@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SocketUtil.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:SocketUtil.Fakes.ShimDBHelpSql">
+            <summary>SocketUtil.DBHelpSql 的填充码类型</summary>
+        </member>
+        <member name="M:SocketUtil.Fakes.ShimDBHelpSql.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:SocketUtil.Fakes.ShimDBHelpSql.#ctor(SocketUtil.DBHelpSql)">
+            <summary>初始化给定实例的新填充码</summary>
+        </member>
+        <member name="T:SocketUtil.Fakes.ShimDBHelpSql.AllInstances">
+            <summary>为所有实例成员定义填充码</summary>
+        </member>
+        <member name="M:SocketUtil.Fakes.ShimDBHelpSql.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:SocketUtil.Fakes.ShimDBHelpSql.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.BuildIntCommandSqlConnectionStringIDataParameterArray">
+            <summary>设置 DBHelpSql.BuildIntCommand(SqlConnection connection, String storedProcName, IDataParameter[] parameters) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.BuildQueryCommandSqlConnectionStringIDataParameterArray">
+            <summary>设置 DBHelpSql.BuildQueryCommand(SqlConnection connection, String storedProcName, IDataParameter[] parameters) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ColumnExistsStringString">
+            <summary>设置 DBHelpSql.ColumnExists(String tableName, String columnName) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.Constructor">
+            <summary>设置 DBHelpSql.DBHelpSql() 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExecuteProcStringSqlParameterArray">
+            <summary>设置 DBHelpSql.ExecuteProc(String procName, SqlParameter[] values) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExecuteReaderString">
+            <summary>设置 DBHelpSql.ExecuteReader(String strSQL) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExecuteReaderStringSqlParameterArray">
+            <summary>设置 DBHelpSql.ExecuteReader(String SQLString, SqlParameter[] cmdParms) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExecuteScalarStringSqlParameterArray">
+            <summary>设置 DBHelpSql.ExecuteScalar(String sqlstr, SqlParameter[] commandParameters) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExecuteScalar_StoredProcedureStringSqlParameterArray">
+            <summary>设置 DBHelpSql.ExecuteScalar_StoredProcedure(String sqlstr, SqlParameter[] commandParameters) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExecuteSqlByTimeStringInt32">
+            <summary>设置 DBHelpSql.ExecuteSqlByTime(String SQLString, Int32 Times) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExecuteSqlGetStringString">
+            <summary>设置 DBHelpSql.ExecuteSqlGet(String SQLString, String content) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExecuteSqlInsertImgStringByteArray">
+            <summary>设置 DBHelpSql.ExecuteSqlInsertImg(String strSQL, Byte[] fs) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExecuteSqlString">
+            <summary>设置 DBHelpSql.ExecuteSql(String SQLString) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExecuteSqlStringSqlParameterArray">
+            <summary>设置 DBHelpSql.ExecuteSql(String SQLString, SqlParameter[] cmdParms) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExecuteSqlStringString">
+            <summary>设置 DBHelpSql.ExecuteSql(String SQLString, String content) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExecuteSqlTranHashtable">
+            <summary>设置 DBHelpSql.ExecuteSqlTran(Hashtable SQLStringList) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExecuteSqlTranListOfString">
+            <summary>设置 DBHelpSql.ExecuteSqlTran(List`1&lt;String&gt; SQLStringList) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExecuteSqlTranWithIndentityHashtable">
+            <summary>设置 DBHelpSql.ExecuteSqlTranWithIndentity(Hashtable SQLStringList) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExistsString">
+            <summary>设置 DBHelpSql.Exists(String strSql) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.ExistsStringSqlParameterArray">
+            <summary>设置 DBHelpSql.Exists(String strSql, SqlParameter[] cmdParms) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.GetMaxIDStringString">
+            <summary>设置 DBHelpSql.GetMaxID(String FieldName, String TableName) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.GetSingleString">
+            <summary>设置 DBHelpSql.GetSingle(String SQLString) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.GetSingleStringInt32">
+            <summary>设置 DBHelpSql.GetSingle(String SQLString, Int32 Times) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.GetSingleStringSqlParameterArray">
+            <summary>设置 DBHelpSql.GetSingle(String SQLString, SqlParameter[] cmdParms) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.PrepareCommandSqlCommandSqlConnectionSqlTransactionCommandTypeStringSqlParameterArray">
+            <summary>设置 DBHelpSql.PrepareCommand(SqlCommand cmd, SqlConnection conn, SqlTransaction trans, CommandType cmdType, String cmdText, SqlParameter[] cmdParms) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.PrepareCommandSqlCommandSqlConnectionSqlTransactionStringSqlParameterArray">
+            <summary>设置 DBHelpSql.PrepareCommand(SqlCommand cmd, SqlConnection conn, SqlTransaction trans, String cmdText, SqlParameter[] cmdParms) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.QueryString">
+            <summary>设置 DBHelpSql.Query(String SQLString) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.QueryStringInt32">
+            <summary>设置 DBHelpSql.Query(String SQLString, Int32 Times) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.QueryStringSqlParameterArray">
+            <summary>设置 DBHelpSql.Query(String SQLString, SqlParameter[] cmdParms) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.RunProcedureGetDSStringIDataParameterArray">
+            <summary>设置 DBHelpSql.RunProcedureGetDS(String storedProcName, IDataParameter[] parameters) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.RunProcedureNewStringIDataParameterArray">
+            <summary>设置 DBHelpSql.RunProcedureNew(String storedProcName, IDataParameter[] parameters) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.RunProcedureStringIDataParameterArray">
+            <summary>设置 DBHelpSql.RunProcedure(String storedProcName, IDataParameter[] parameters) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.RunProcedureStringIDataParameterArrayInt32Out">
+            <summary>设置 DBHelpSql.RunProcedure(String storedProcName, IDataParameter[] parameters, Int32&amp; rowsAffected) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.RunProcedureStringIDataParameterArrayString">
+            <summary>设置 DBHelpSql.RunProcedure(String storedProcName, IDataParameter[] parameters, String tableName) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.RunProcedureStringIDataParameterArrayStringInt32">
+            <summary>设置 DBHelpSql.RunProcedure(String storedProcName, IDataParameter[] parameters, String tableName, Int32 Times) 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.StaticConstructor">
+            <summary>设置 DBHelpSql.DBHelpSql() 的 填充码</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.ShimDBHelpSql.TabExistsString">
+            <summary>设置 DBHelpSql.TabExists(String TableName) 的 填充码</summary>
+        </member>
+        <member name="T:SocketUtil.Fakes.StubDBHelpSql">
+            <summary>SocketUtil.DBHelpSql 的存根类型</summary>
+        </member>
+        <member name="M:SocketUtil.Fakes.StubDBHelpSql.#ctor">
+            <summary>初始化新实例</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.StubDBHelpSql.CallBase">
+            <summary>获取或设置一个值，该值指示是否应调用基方法而不调用回退行为</summary>
+        </member>
+        <member name="M:SocketUtil.Fakes.StubDBHelpSql.InitializeStub">
+            <summary>初始化 type StubDBHelpSql 的新实例</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.StubDBHelpSql.InstanceBehavior">
+            <summary>获取或设置实例行为。</summary>
+        </member>
+        <member name="P:SocketUtil.Fakes.StubDBHelpSql.InstanceObserver">
+            <summary>获取或设置实例观察者。</summary>
+        </member>
+    </members>
+</doc>
