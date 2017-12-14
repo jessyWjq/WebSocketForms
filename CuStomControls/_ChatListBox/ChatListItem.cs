@@ -18,9 +18,11 @@ namespace CuStomControls._ChatListBox
         /// 获取或者设置列表项的显示文本
         /// </summary>
         //[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public string Text {
+        public string Text
+        {
             get { return text; }
-            set {
+            set
+            {
                 text = value;
                 if (this.ownerChatListBox != null)
                     this.ownerChatListBox.Invalidate(this.bounds);
@@ -32,9 +34,11 @@ namespace CuStomControls._ChatListBox
         /// 获取或者设置列表项是否展开
         /// </summary>
         [DefaultValue(false)]
-        public bool IsOpen {
+        public bool IsOpen
+        {
             get { return isOpen; }
-            set {
+            set
+            {
                 isOpen = value;
                 if (this.ownerChatListBox != null)
                     this.ownerChatListBox.Invalidate();
@@ -46,13 +50,15 @@ namespace CuStomControls._ChatListBox
         /// 当前列表项下面闪烁图标的个数
         /// </summary>
         [Browsable(false)]
-        public int TwinkleSubItemNumber {
+        public int TwinkleSubItemNumber
+        {
             get { return twinkleSubItemNumber; }
             internal set { twinkleSubItemNumber = value; }
         }
 
         private bool isTwinkleHide;
-        internal bool IsTwinkleHide {
+        internal bool IsTwinkleHide
+        {
             get { return isTwinkleHide; }
             set { isTwinkleHide = value; }
         }
@@ -62,7 +68,8 @@ namespace CuStomControls._ChatListBox
         /// 获取列表项的显示区域
         /// </summary>
         [Browsable(false)]
-        public Rectangle Bounds {
+        public Rectangle Bounds
+        {
             get { return bounds; }
             internal set { bounds = value; }
         }
@@ -72,7 +79,8 @@ namespace CuStomControls._ChatListBox
         /// 获取列表项所在的控件
         /// </summary>
         [Browsable(false)]
-        public ChatListBox OwnerChatListBox {
+        public ChatListBox OwnerChatListBox
+        {
             get { return ownerChatListBox; }
             internal set { ownerChatListBox = value; }
         }
@@ -82,8 +90,10 @@ namespace CuStomControls._ChatListBox
         /// 获取当前列表项所有子项的集合
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public ChatListSubItemCollection SubItems {
-            get {
+        public ChatListSubItemCollection SubItems
+        {
+            get
+            {
                 if (subItems == null)
                     subItems = new ChatListSubItemCollection(this);
                 return subItems;
@@ -92,18 +102,22 @@ namespace CuStomControls._ChatListBox
 
         public ChatListItem() { if (this.text == null) this.text = string.Empty; }
         public ChatListItem(string text) { this.text = text; }
-        public ChatListItem(string text, bool bOpen) {
+        public ChatListItem(string text, bool bOpen)
+        {
             this.text = text;
             this.isOpen = bOpen;
         }
-        public ChatListItem(ChatListSubItem[] subItems) {
+        public ChatListItem(ChatListSubItem[] subItems)
+        {
             this.subItems.AddRange(subItems);
         }
-        public ChatListItem(string text, ChatListSubItem[] subItems) {
+        public ChatListItem(string text, ChatListSubItem[] subItems)
+        {
             this.text = text;
             this.subItems.AddRange(subItems);
         }
-        public ChatListItem(string text, bool bOpen, ChatListSubItem[] subItems) {
+        public ChatListItem(string text, bool bOpen, ChatListSubItem[] subItems)
+        {
             this.text = text;
             this.isOpen = bOpen;
             this.subItems.AddRange(subItems);
@@ -120,7 +134,8 @@ namespace CuStomControls._ChatListBox
             /// <summary>
             /// 对列表进行排序
             /// </summary>
-            public void Sort() {
+            public void Sort()
+            {
                 Array.Sort<ChatListSubItem>(m_arrSubItems, 0, this.count, null);
                 if (this.owner.ownerChatListBox != null)
                     this.owner.ownerChatListBox.Invalidate(this.owner.bounds);
@@ -129,19 +144,23 @@ namespace CuStomControls._ChatListBox
             /// 获取在线人数
             /// </summary>
             /// <returns>在线人数</returns>
-            public int GetOnLineNumber() {
+            public int GetOnLineNumber()
+            {
                 int num = 0;
-                for (int i = 0, len = this.count; i < len; i++) {
+                for (int i = 0, len = this.count; i < len; i++)
+                {
                     if (m_arrSubItems[i].Status != ChatListSubItem.UserStatus.OffLine)
                         num++;
                 }
                 return num;
             }
             //确认存储空间
-            private void EnsureSpace(int elements) {
+            private void EnsureSpace(int elements)
+            {
                 if (m_arrSubItems == null)
                     m_arrSubItems = new ChatListSubItem[Math.Max(elements, 4)];
-                else if (elements + this.count > m_arrSubItems.Length) {
+                else if (elements + this.count > m_arrSubItems.Length)
+                {
                     ChatListSubItem[] arrTemp = new ChatListSubItem[Math.Max(m_arrSubItems.Length * 2, elements + this.count)];
                     m_arrSubItems.CopyTo(arrTemp, 0);
                     m_arrSubItems = arrTemp;
@@ -152,18 +171,21 @@ namespace CuStomControls._ChatListBox
             /// </summary>
             /// <param name="subItem">要获取索引的子项</param>
             /// <returns>索引</returns>
-            public int IndexOf(ChatListSubItem subItem) {
+            public int IndexOf(ChatListSubItem subItem)
+            {
                 return Array.IndexOf<ChatListSubItem>(m_arrSubItems, subItem);
             }
             /// <summary>
             /// 添加一个子项
             /// </summary>
             /// <param name="subItem">要添加的子项</param>
-            public void Add(ChatListSubItem subItem) {
+            public void Add(ChatListSubItem subItem)
+            {
                 if (subItem == null)
                     throw new ArgumentNullException("SubItem cannot be null");
                 this.EnsureSpace(1);
-                if (-1 == IndexOf(subItem)) {
+                if (-1 == IndexOf(subItem))
+                {
                     subItem.OwnerListItem = owner;
                     m_arrSubItems[this.count++] = subItem;
                     if (this.owner.OwnerChatListBox != null)
@@ -174,20 +196,26 @@ namespace CuStomControls._ChatListBox
             /// 添加一组子项
             /// </summary>
             /// <param name="subItems">要添加子项的数组</param>
-            public void AddRange(ChatListSubItem[] subItems) {
+            public void AddRange(ChatListSubItem[] subItems)
+            {
                 if (subItems == null)
                     throw new ArgumentNullException("SubItems cannot be null");
                 this.EnsureSpace(subItems.Length);
-                try {
-                    foreach (ChatListSubItem subItem in subItems) {
+                try
+                {
+                    foreach (ChatListSubItem subItem in subItems)
+                    {
                         if (subItem == null)
                             throw new ArgumentNullException("SubItem cannot be null");
-                        if (-1 == this.IndexOf(subItem)) {
+                        if (-1 == this.IndexOf(subItem))
+                        {
                             subItem.OwnerListItem = this.owner;
                             m_arrSubItems[this.count++] = subItem;
                         }
                     }
-                } finally {
+                }
+                finally
+                {
                     if (this.owner.OwnerChatListBox != null)
                         this.owner.OwnerChatListBox.Invalidate();
                 }
@@ -196,13 +224,17 @@ namespace CuStomControls._ChatListBox
             /// 根据在线状态添加一个子项
             /// </summary>
             /// <param name="subItem">要添加的子项</param>
-            public void AddAccordingToStatus(ChatListSubItem subItem) {
-                if (subItem.Status == ChatListSubItem.UserStatus.OffLine) {
+            public void AddAccordingToStatus(ChatListSubItem subItem)
+            {
+                if (subItem.Status == ChatListSubItem.UserStatus.OffLine)
+                {
                     this.Add(subItem);
                     return;
                 }
-                for (int i = 0, len = this.count; i < len; i++) {
-                    if (subItem.Status <= m_arrSubItems[i].Status) {
+                for (int i = 0, len = this.count; i < len; i++)
+                {
+                    if (subItem.Status <= m_arrSubItems[i].Status)
+                    {
                         this.Insert(i, subItem);
                         return;
                     }
@@ -213,7 +245,8 @@ namespace CuStomControls._ChatListBox
             /// 移除一个子项
             /// </summary>
             /// <param name="subItem">要移除的子项</param>
-            public void Remove(ChatListSubItem subItem) {
+            public void Remove(ChatListSubItem subItem)
+            {
                 int index = this.IndexOf(subItem);
                 if (-1 != index)
                     this.RemoveAt(index);
@@ -222,7 +255,8 @@ namespace CuStomControls._ChatListBox
             /// 根据索引移除一个子项
             /// </summary>
             /// <param name="index">要移除子项的索引</param>
-            public void RemoveAt(int index) {
+            public void RemoveAt(int index)
+            {
                 if (index < 0 || index >= this.count)
                     throw new IndexOutOfRangeException("Index was outside the bounds of the array");
                 this.count--;
@@ -234,7 +268,8 @@ namespace CuStomControls._ChatListBox
             /// <summary>
             /// 清空所有子项
             /// </summary>
-            public void Clear() {
+            public void Clear()
+            {
                 this.count = 0;
                 m_arrSubItems = null;
                 if (this.owner.OwnerChatListBox != null)
@@ -245,7 +280,8 @@ namespace CuStomControls._ChatListBox
             /// </summary>
             /// <param name="index">索引位置</param>
             /// <param name="subItem">要插入的子项</param>
-            public void Insert(int index, ChatListSubItem subItem) {
+            public void Insert(int index, ChatListSubItem subItem)
+            {
                 if (index < 0 || index >= this.count)
                     throw new IndexOutOfRangeException("Index was outside the bounds of the array");
                 if (subItem == null)
@@ -264,7 +300,8 @@ namespace CuStomControls._ChatListBox
             /// </summary>
             /// <param name="array">要拷贝的数组</param>
             /// <param name="index">拷贝的索引位置</param>
-            public void CopyTo(Array array, int index) {
+            public void CopyTo(Array array, int index)
+            {
                 if (array == null)
                     throw new ArgumentNullException("Array cannot be null");
                 m_arrSubItems.CopyTo(array, index);
@@ -274,7 +311,8 @@ namespace CuStomControls._ChatListBox
             /// </summary>
             /// <param name="subItem">要判断的子项</param>
             /// <returns>是否在集合内</returns>
-            public bool Contains(ChatListSubItem subItem) {
+            public bool Contains(ChatListSubItem subItem)
+            {
                 return this.IndexOf(subItem) != -1;
             }
             /// <summary>
@@ -282,13 +320,16 @@ namespace CuStomControls._ChatListBox
             /// </summary>
             /// <param name="index">索引位置</param>
             /// <returns>列表子项</returns>
-            public ChatListSubItem this[int index] {
-                get {
+            public ChatListSubItem this[int index]
+            {
+                get
+                {
                     if (index < 0 || index >= this.count)
                         throw new IndexOutOfRangeException("Index was outside the bounds of the array");
                     return m_arrSubItems[index];
                 }
-                set {
+                set
+                {
                     if (index < 0 || index >= this.count)
                         throw new IndexOutOfRangeException("Index was outside the bounds of the array");
                     m_arrSubItems[index] = value;
@@ -297,81 +338,98 @@ namespace CuStomControls._ChatListBox
                 }
             }
             //接口实现
-            int IList.Add(object value) {
+            int IList.Add(object value)
+            {
                 if (!(value is ChatListSubItem))
                     throw new ArgumentException("Value cannot convert to ListSubItem");
                 this.Add((ChatListSubItem)value);
                 return this.IndexOf((ChatListSubItem)value);
             }
 
-            void IList.Clear() {
+            void IList.Clear()
+            {
                 this.Clear();
             }
 
-            bool IList.Contains(object value) {
+            bool IList.Contains(object value)
+            {
                 if (!(value is ChatListSubItem))
                     throw new ArgumentException("Value cannot convert to ListSubItem");
                 return this.Contains((ChatListSubItem)value);
             }
 
-            int IList.IndexOf(object value) {
+            int IList.IndexOf(object value)
+            {
                 if (!(value is ChatListSubItem))
                     throw new ArgumentException("Value cannot convert to ListSubItem");
                 return this.IndexOf((ChatListSubItem)value);
             }
 
-            void IList.Insert(int index, object value) {
+            void IList.Insert(int index, object value)
+            {
                 if (!(value is ChatListSubItem))
                     throw new ArgumentException("Value cannot convert to ListSubItem");
                 this.Insert(index, (ChatListSubItem)value);
             }
 
-            bool IList.IsFixedSize {
+            bool IList.IsFixedSize
+            {
                 get { return false; }
             }
 
-            bool IList.IsReadOnly {
+            bool IList.IsReadOnly
+            {
                 get { return false; }
             }
 
-            void IList.Remove(object value) {
+            void IList.Remove(object value)
+            {
                 if (!(value is ChatListSubItem))
                     throw new ArgumentException("Value cannot convert to ListSubItem");
                 this.Remove((ChatListSubItem)value);
             }
 
-            void IList.RemoveAt(int index) {
+            void IList.RemoveAt(int index)
+            {
                 this.RemoveAt(index);
             }
 
-            object IList.this[int index] {
-                get {
+            object IList.this[int index]
+            {
+                get
+                {
                     return this[index];
                 }
-                set {
+                set
+                {
                     if (!(value is ChatListSubItem))
                         throw new ArgumentException("Value cannot convert to ListSubItem");
                     this[index] = (ChatListSubItem)value;
                 }
             }
 
-            void ICollection.CopyTo(Array array, int index) {
+            void ICollection.CopyTo(Array array, int index)
+            {
                 this.CopyTo(array, index);
             }
 
-            int ICollection.Count {
+            int ICollection.Count
+            {
                 get { return this.count; }
             }
 
-            bool ICollection.IsSynchronized {
+            bool ICollection.IsSynchronized
+            {
                 get { return true; }
             }
 
-            object ICollection.SyncRoot {
+            object ICollection.SyncRoot
+            {
                 get { return this; }
             }
 
-            IEnumerator IEnumerable.GetEnumerator() {
+            IEnumerator IEnumerable.GetEnumerator()
+            {
                 for (int i = 0, Len = this.count; i < Len; i++)
                     yield return m_arrSubItems[i];
             }

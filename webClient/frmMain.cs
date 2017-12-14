@@ -17,9 +17,9 @@ namespace webClient
             //int iActulaWidth = Screen.PrimaryScreen.Bounds.Width;
             //int iActulaHeight = Screen.PrimaryScreen.Bounds.Height;
             //当前的屏幕除任务栏外的工作域大小
-            int iActulaWidth = SystemInformation.WorkingArea.Width;
-            int iActulaHeight = SystemInformation.WorkingArea.Height;
-            this.Location = new Point(iActulaWidth - this.Width, iActulaHeight - this.Height);
+            //int iActulaWidth = SystemInformation.WorkingArea.Width;
+            //int iActulaHeight = SystemInformation.WorkingArea.Height;
+            //this.Location = new Point(iActulaWidth - this.Width, iActulaHeight - this.Height);
 
             button1.Text = "闪动";
             button2.Text = "插入[离开]";

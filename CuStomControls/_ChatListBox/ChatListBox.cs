@@ -253,7 +253,8 @@ namespace _ChatListBox
 
         protected override void OnCreateControl()
         {
-            Thread threadInvalidate = new Thread(new ThreadStart(() => {
+            Thread threadInvalidate = new Thread(new ThreadStart(() =>
+            {
                 Rectangle rectReDraw = new Rectangle(0, 0, this.Width, this.Height);
                 while (true)
                 {          //后台检测要闪动的图标然后重绘

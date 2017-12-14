@@ -8,16 +8,19 @@ namespace CuStomControls._ChatListBox
     public class ChatListEventArgs
     {
         private ChatListSubItem mouseOnSubItem;
-        public ChatListSubItem MouseOnSubItem {
+        public ChatListSubItem MouseOnSubItem
+        {
             get { return mouseOnSubItem; }
         }
 
         private ChatListSubItem selectSubItem;
-        public ChatListSubItem SelectSubItem {
+        public ChatListSubItem SelectSubItem
+        {
             get { return selectSubItem; }
         }
 
-        public ChatListEventArgs(ChatListSubItem mouseonsubitem, ChatListSubItem selectsubitem) {
+        public ChatListEventArgs(ChatListSubItem mouseonsubitem, ChatListSubItem selectsubitem)
+        {
             this.mouseOnSubItem = mouseonsubitem;
             this.selectSubItem = selectsubitem;
         }

@@ -48,7 +48,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(212, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(102, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(117, 106);
             this.pictureBox1.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(381, 211);
+            this.button3.Location = new System.Drawing.Point(287, 87);
             this.button3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 27);
@@ -68,7 +68,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(381, 178);
+            this.button2.Location = new System.Drawing.Point(287, 54);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 27);
@@ -81,7 +81,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(381, 145);
+            this.button1.Location = new System.Drawing.Point(287, 21);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 27);
@@ -92,11 +92,12 @@
             // 
             // chatListBox1
             // 
-            this.chatListBox1.BackColor = System.Drawing.Color.White;
+            this.chatListBox1.BackColor = System.Drawing.Color.Transparent;
             this.chatListBox1.ForeColor = System.Drawing.Color.DarkOrange;
-            this.chatListBox1.Location = new System.Drawing.Point(32, 144);
+            this.chatListBox1.ItemColor = System.Drawing.Color.WhiteSmoke;
+            this.chatListBox1.Location = new System.Drawing.Point(-1, 120);
             this.chatListBox1.Name = "chatListBox1";
-            this.chatListBox1.Size = new System.Drawing.Size(331, 335);
+            this.chatListBox1.Size = new System.Drawing.Size(402, 493);
             this.chatListBox1.TabIndex = 2;
             this.chatListBox1.Text = "chatListBox1";
             this.chatListBox1.DoubleClickSubItem += new _ChatListBox.ChatListBox.ChatListEventHandler(this.chatListBox1_DoubleClickSubItem);
@@ -107,7 +108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 615);
+            this.ClientSize = new System.Drawing.Size(400, 615);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

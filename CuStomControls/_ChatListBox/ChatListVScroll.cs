@@ -10,35 +10,42 @@ namespace CuStomControls._ChatListBox
     internal class ChatListVScroll
     {   //滚动条自身的区域
         private Rectangle bounds;
-        public Rectangle Bounds {
+        public Rectangle Bounds
+        {
             get { return bounds; }
         }
         //上边箭头区域
         private Rectangle upBounds;
-        public Rectangle UpBounds {
+        public Rectangle UpBounds
+        {
             get { return upBounds; }
         }
         //下边箭头区域
         private Rectangle downBounds;
-        public Rectangle DownBounds {
+        public Rectangle DownBounds
+        {
             get { return downBounds; }
         }
         //滑块区域
         private Rectangle sliderBounds;
-        public Rectangle SliderBounds {
+        public Rectangle SliderBounds
+        {
             get { return sliderBounds; }
         }
 
         private Color backColor;
-        public Color BackColor {
+        public Color BackColor
+        {
             get { return backColor; }
             set { backColor = value; }
         }
 
         private Color sliderDefaultColor;
-        public Color SliderDefaultColor {
+        public Color SliderDefaultColor
+        {
             get { return sliderDefaultColor; }
-            set {
+            set
+            {
                 if (sliderDefaultColor == value)
                     return;
                 sliderDefaultColor = value;
@@ -47,9 +54,11 @@ namespace CuStomControls._ChatListBox
         }
 
         private Color sliderDownColor;
-        public Color SliderDownColor {
+        public Color SliderDownColor
+        {
             get { return sliderDownColor; }
-            set {
+            set
+            {
                 if (sliderDownColor == value)
                     return;
                 sliderDownColor = value;
@@ -58,9 +67,11 @@ namespace CuStomControls._ChatListBox
         }
 
         private Color arrowBackColor;
-        public Color ArrowBackColor {
+        public Color ArrowBackColor
+        {
             get { return arrowBackColor; }
-            set {
+            set
+            {
                 if (arrowBackColor == value)
                     return;
                 arrowBackColor = value;
@@ -69,9 +80,11 @@ namespace CuStomControls._ChatListBox
         }
 
         private Color arrowColor;
-        public Color ArrowColor {
+        public Color ArrowColor
+        {
             get { return arrowColor; }
-            set {
+            set
+            {
                 if (arrowColor == value)
                     return;
                 arrowColor = value;
@@ -80,26 +93,34 @@ namespace CuStomControls._ChatListBox
         }
         //绑定的控件
         private Control ctrl;
-        public Control Ctrl {
+        public Control Ctrl
+        {
             get { return ctrl; }
             set { ctrl = value; }
         }
         //虚拟的一个高度(控件中内容的高度)
         private int virtualHeight;
-        public int VirtualHeight {
+        public int VirtualHeight
+        {
             get { return virtualHeight; }
-            set {
-                if (value <= ctrl.Height) {
+            set
+            {
+                if (value <= ctrl.Height)
+                {
                     if (shouldBeDraw == false)
                         return;
                     shouldBeDraw = false;
-                    if (this.value != 0) {
+                    if (this.value != 0)
+                    {
                         this.value = 0;
                         ctrl.Invalidate();
                     }
-                } else {
+                }
+                else
+                {
                     shouldBeDraw = true;
-                    if (value - this.value < ctrl.Height) {
+                    if (value - this.value < ctrl.Height)
+                    {
                         this.value -= ctrl.Height - value + this.value;
                         ctrl.Invalidate();
                     }
@@ -109,19 +130,23 @@ namespace CuStomControls._ChatListBox
         }
         //当前滚动条位置
         private int value;
-        public int Value {
+        public int Value
+        {
             get { return value; }
-            set {
+            set
+            {
                 if (!shouldBeDraw)
                     return;
-                if (value < 0) {
+                if (value < 0)
+                {
                     if (this.value == 0)
                         return;
                     this.value = 0;
                     ctrl.Invalidate();
                     return;
                 }
-                if (value > virtualHeight - ctrl.Height) {
+                if (value > virtualHeight - ctrl.Height)
+                {
                     if (this.value == virtualHeight - ctrl.Height)
                         return;
                     this.value = virtualHeight - ctrl.Height;
@@ -134,15 +159,19 @@ namespace CuStomControls._ChatListBox
         }
         //是否有必要在控件上绘制滚动条
         private bool shouldBeDraw;
-        public bool ShouldBeDraw {
+        public bool ShouldBeDraw
+        {
             get { return shouldBeDraw; }
         }
 
         private bool isMouseDown;
-        public bool IsMouseDown {
+        public bool IsMouseDown
+        {
             get { return isMouseDown; }
-            set {
-                if (value) {
+            set
+            {
+                if (value)
+                {
                     m_nLastSliderY = sliderBounds.Y;
                 }
                 isMouseDown = value;
@@ -150,9 +179,11 @@ namespace CuStomControls._ChatListBox
         }
 
         private bool isMouseOnSlider;
-        public bool IsMouseOnSlider {
+        public bool IsMouseOnSlider
+        {
             get { return isMouseOnSlider; }
-            set {
+            set
+            {
                 if (isMouseOnSlider == value)
                     return;
                 isMouseOnSlider = value;
@@ -161,9 +192,11 @@ namespace CuStomControls._ChatListBox
         }
 
         private bool isMouseOnUp;
-        public bool IsMouseOnUp {
+        public bool IsMouseOnUp
+        {
             get { return isMouseOnUp; }
-            set {
+            set
+            {
                 if (isMouseOnUp == value)
                     return;
                 isMouseOnUp = value;
@@ -172,9 +205,11 @@ namespace CuStomControls._ChatListBox
         }
 
         private bool isMouseOnDown;
-        public bool IsMouseOnDown {
+        public bool IsMouseOnDown
+        {
             get { return isMouseOnDown; }
-            set {
+            set
+            {
                 if (isMouseOnDown == value)
                     return;
                 isMouseOnDown = value;
@@ -183,14 +218,16 @@ namespace CuStomControls._ChatListBox
         }
         //鼠标在滑块点下时候的y坐标
         private int mouseDownY;
-        public int MouseDownY {
+        public int MouseDownY
+        {
             get { return mouseDownY; }
             set { mouseDownY = value; }
         }
         //滑块移动前的 滑块的y坐标
         private int m_nLastSliderY;
 
-        public ChatListVScroll(Control c) {
+        public ChatListVScroll(Control c)
+        {
             this.ctrl = c;
             virtualHeight = 400;
             bounds = new Rectangle(0, 0, 10, 10);
@@ -204,7 +241,8 @@ namespace CuStomControls._ChatListBox
             this.arrowColor = Color.White;
         }
 
-        public void ClearAllMouseOn() {
+        public void ClearAllMouseOn()
+        {
             if (!this.isMouseOnDown && !this.isMouseOnSlider && !this.isMouseOnUp)
                 return;
             this.isMouseOnDown =
@@ -213,7 +251,8 @@ namespace CuStomControls._ChatListBox
             ctrl.Invalidate(this.bounds);
         }
         //将滑块跳动至一个地方
-        public void MoveSliderToLocation(int nCurrentMouseY) {
+        public void MoveSliderToLocation(int nCurrentMouseY)
+        {
             if (nCurrentMouseY - sliderBounds.Height / 2 < 11)
                 sliderBounds.Y = 11;
             else if (nCurrentMouseY + sliderBounds.Height / 2 > ctrl.Height - 11)
@@ -224,24 +263,31 @@ namespace CuStomControls._ChatListBox
             ctrl.Invalidate();
         }
         //根据鼠标位置移动滑块
-        public void MoveSliderFromLocation(int nCurrentMouseY) {
+        public void MoveSliderFromLocation(int nCurrentMouseY)
+        {
             //if (!this.IsMouseDown) return;
-            if (m_nLastSliderY + nCurrentMouseY - mouseDownY < 11) {
+            if (m_nLastSliderY + nCurrentMouseY - mouseDownY < 11)
+            {
                 if (sliderBounds.Y == 11)
                     return;
                 sliderBounds.Y = 11;
-            } else if (m_nLastSliderY + nCurrentMouseY - mouseDownY > ctrl.Height - 11 - SliderBounds.Height) {
+            }
+            else if (m_nLastSliderY + nCurrentMouseY - mouseDownY > ctrl.Height - 11 - SliderBounds.Height)
+            {
                 if (sliderBounds.Y == ctrl.Height - 11 - sliderBounds.Height)
                     return;
                 sliderBounds.Y = ctrl.Height - 11 - sliderBounds.Height;
-            } else {
+            }
+            else
+            {
                 sliderBounds.Y = m_nLastSliderY + nCurrentMouseY - mouseDownY;
             }
             this.value = (int)((double)(sliderBounds.Y - 11) / (ctrl.Height - 22 - SliderBounds.Height) * (virtualHeight - ctrl.Height));
             ctrl.Invalidate();
         }
         //绘制滚动条
-        public void ReDrawScroll(Graphics g) {
+        public void ReDrawScroll(Graphics g)
+        {
             if (!shouldBeDraw)
                 return;
             bounds.X = ctrl.Width - 10;
@@ -254,7 +300,8 @@ namespace CuStomControls._ChatListBox
             if (sliderBounds.Height < 3) sliderBounds.Height = 3;
             sliderBounds.Y = 11 + (int)(((double)value / (virtualHeight - ctrl.Height)) * (ctrl.Height - 22 - sliderBounds.Height));
             SolidBrush sb = new SolidBrush(this.backColor);
-            try {
+            try
+            {
                 g.FillRectangle(sb, bounds);
                 sb.Color = this.arrowBackColor;
                 g.FillRectangle(sb, upBounds);
@@ -277,7 +324,9 @@ namespace CuStomControls._ChatListBox
                     new Point(ctrl.Width - 8,ctrl.Height - 7),
                     new Point(ctrl.Width - 2,ctrl.Height - 7)
                 });
-            } finally {
+            }
+            finally
+            {
                 sb.Dispose();
             }
         }
